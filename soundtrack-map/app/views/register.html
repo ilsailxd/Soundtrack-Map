@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro - Soundtrack Map{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="card">
+    <h2>🎵 Criar Conta</h2>
+    <p>Cadastre-se para começar a mapear suas músicas pelo mundo.</p>
+
+    <form action="{{ url_for('auth.register') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" required placeholder="Seu nome">
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required placeholder="Crie uma senha">
+        </div>
+
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+
+    <p style="margin-top: 15px; text-align: center;">
+        Já tem uma conta? <a href="{{ url_for('auth.login') }}">Faça login</a>
+    </p>
+</div>
+</div>
+{% endblock %}
