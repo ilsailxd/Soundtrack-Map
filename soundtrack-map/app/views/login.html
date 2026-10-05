@@ -1,29 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Login - Soundtrack Map{% endblock %}
-
 {% block content %}
-<div class="container">
-    <div class="card">
-        <h2>🎵 Soundtrack Map</h2>
-        <p>Faça login para compartilhar suas músicas e fotos pelo mundo.</p>
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">🎵 Soundtrack Map</h2>
+        <p class="auth-subtitle">Faça login para compartilhar suas músicas e fotos pelo mundo.</p>
 
-    <form action="{{ url_for('auth.login') }}" method="POST">
-        <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required placeholder="seu@email.com">
-        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-        <div class="form-group">
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" required placeholder="Sua senha">
-        </div>
+        <form action="{{ url_for('auth.login') }}" method="POST">
+            <div class="form-group">
+                <label for="email">E-mail ou Usuário</label>
+                <input type="text" id="email" name="email" required placeholder="seu@email.com ou usuário">
+            </div>
 
-        <button type="submit" class="btn">Entrar</button>
-    </form>
-    <p style="margin-top: 15px; text-align: center;">
-        Ainda não tem conta? <a href="{{ url_for('auth.register') }}">Cadastre-se</a>
-    </p>
-</div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required placeholder="Sua senha">
+            </div>
+
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+
+        <p class="auth-footer" style="margin-top: 15px; text-align: center;">
+            Ainda não tem conta? <a href="{{ url_for('auth.register') }}">Cadastre-se</a>
+        </p>
+    </div>
 </div>
 {% endblock %}
