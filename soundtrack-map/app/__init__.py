@@ -1,20 +1,16 @@
-
-import os
-from flask import Flask
-from app.db import init_db
-from app.controllers.auth_controller import auth_bp
-from app.middleware import auth_middleware
+from flask import Flask, redirect, url_for
 
 def create_app():
-    views_folder = os.path.join(os.path.dirname(__file__), 'views')
-    app = Flask(__name__, template_folder=views_folder)
+    app = Flask(__name__, template_folder='views', static_folder='static')
+    app.config['SECRET_KEY'] = 'soundtrack_map_secret_key_123'
 
-    app.config['SECRET_KEY'] = 'soundtrack-map-chave-secreta-2026'
-
-    # Inicializa o banco de dados SQLite
-    init_db()
-
-    app.before_request(auth_middleware)
+    # Registo de Blueprints
+    from app.controllers.auth_controller import auth_bp
     app.register_blueprint(auth_bp)
+
+    # Rota raiz redireciona para o login
+    @app.route('/')
+    def index():
+        return redirect(url_for('auth.login'))
 
     return app
