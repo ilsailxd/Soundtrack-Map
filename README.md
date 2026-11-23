@@ -1,65 +1,135 @@
-# 🎵 Soundtrack Map
+# SoundTrack-Map 🎵🌍
 
-> **Aplicação web interativa para mapear memórias musicais e fotográficas pelo mundo.**
+**A memory, a sound.**
 
----
+O SoundTrack-Map é uma aplicação web interativa que conecta música, fotografia, lugares e memórias pessoais.
 
-## 📌 Sobre o Projeto
+A proposta é permitir que cada usuário registre momentos especiais associando uma música, uma imagem, uma localização geográfica e uma descrição. Essas lembranças são exibidas em um mapa-múndi interativo, transformando experiências pessoais em um arquivo musical e visual.
 
-O **Soundtrack Map** é um projeto desenvolvido com o objetivo de conectar momentos, fotos e músicas a locais específicos em um mapa interativo, permitindo que os usuários explorem e compartilhem suas experiências pelo mundo de forma intuitiva.
+## ✨ Funcionalidades
 
-### 🚀 Funcionalidades Principais
-- 🔹 **Autenticação de Usuários:** Sistema de cadastro e login seguro com controle de sessão e senhas criptografadas.
-- 🔹 **Navegação Interativa no Mapa:** Mapa global em tela cheia com marcadores dinâmicos alimentado por Leaflet.js e OpenStreetMap.
-- 🔹 **Proteção de Rotas:** Restrição de acesso a páginas exclusivas para usuários autenticados via middleware.
+- **Mapa interativo:** visualização das memórias em diferentes lugares do mundo.
+- **Cadastro de usuários:** criação de contas individuais.
+- **Autenticação:** sistema de login e controle de sessões.
+- **Registro de memórias:** associação de músicas, fotografias, lugares e descrições.
+- **Edição e exclusão:** gerenciamento das próprias memórias.
+- **Memórias compartilhadas:** visualização das publicações de outros usuários.
+- **Armazenamento de dados:** persistência das informações em banco de dados SQLite.
 
----
+## 🛠️ Tecnologias utilizadas
 
-## 🛠️ Tecnologias Utilizadas
+| Tecnologia | Aplicação |
+|---|---|
+| Python | Lógica e funcionamento do sistema |
+| Flask | Framework web e gerenciamento das rotas |
+| SQLite | Banco de dados |
+| HTML5 | Estrutura das páginas |
+| CSS3 | Estilização e identidade visual |
+| JavaScript | Interatividade e manipulação do mapa |
+| Leaflet | Biblioteca de mapas interativos |
+| Jinja2 | Integração entre Python e HTML |
+| Flask-WTF | Proteção CSRF dos formulários |
 
-O projeto foi construído utilizando as seguintes linguagens e ferramentas:
+## 📁 Estrutura do projeto
 
-<p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="40" height="40" alt="HTML5" title="HTML5" />
-  &nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="40" height="40" alt="CSS3" title="CSS3" />
-  &nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="40" height="40" alt="JavaScript" title="JavaScript" />
-  &nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="40" height="40" alt="Python" title="Python" />
-  &nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" width="40" height="40" alt="Flask" title="Flask" />
-</p>
+```text
+soundtrack/
+│
+├── app/
+│   ├── controllers/
+│   │   ├── auth_controller.py
+│   │   └── soundtrack_controller.py
+│   │
+│   ├── models/
+│   │   ├── soundtrack_model.py
+│   │   └── user_model.py
+│   │
+│   ├── views/
+│   │   ├── adicionar.html
+│   │   ├── base.html
+│   │   ├── dashboard.html
+│   │   ├── login.html
+│   │   └── register.html
+│   │
+│   ├── static/
+│   │   ├── css/
+│   │   └── img/
+│   │
+│   ├── db.py
+│   ├── middleware.py
+│   └── __init__.py
+│
+├── requirements.txt
+├── run.py
+└── soundtrack_map.db
+```
 
----
+## 🚀 Como executar o projeto
 
-## 🛠️ Como o Projeto Foi Desenvolvido
+### 1. Pré-requisitos
 
-1. **Planejamento e Design:** Definição da arquitetura MVC (Flask) e estruturação do layout responsivo com visualizações isoladas para autenticação e navegação.
-2. **Desenvolvimento:** Implementação dos controllers, middleware de segurança, validação em memória dos usuários e integração do Leaflet.js para renderização do mapa.
-3. **Testes e Validação:** Testes de login, criação de contas e responsividade para garantir o correto funcionamento da aplicação.
+- Python instalado.
+- Git instalado.
+- Visual Studio Code (recomendado).
 
----
+### 2. Clonar o repositório
 
-## 👥 Colaboradores / Equipe
+```bash
+git clone URL_DO_REPOSITORIO
+```
 
-Projeto realizado no **IFSP (Câmpus São Paulo)** por:
+Entre na pasta do projeto:
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/ilsailxd">
-        <img src="https://github.com/ilsailxd.png" width="100px;" alt="Isabela Gomes"/><br />
-        <sub><b>Isabela Gomes</b></sub>
-      </a>
-    </td>
-      </a>
-    </td>
-  </tr>
-</table>
+```bash
+cd soundtrack
+```
 
----
+### 3. Criar um ambiente virtual
 
-## 📄 Licença / Contexto
+```bash
+python -m venv venv
+```
 
-Este projeto foi desenvolvido como trabalho acadêmico para o curso técnico em **Desenvolvimento de Sistemas** no **IFSP (Câmpus São Paulo)**.
+Ative o ambiente virtual no Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### 4. Instalar as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Executar a aplicação
+
+```bash
+python run.py
+```
+
+Acesse no navegador:
+
+```text
+http://127.0.0.1:5000
+```
+
+## 🔐 Segurança
+
+O projeto conta com mecanismos de proteção, incluindo:
+
+- Hash de senhas para armazenamento seguro.
+- Controle de autenticação por sessões.
+- Proteção de rotas para usuários autenticados.
+- Verificação de propriedade antes da edição e exclusão de memórias.
+- Proteção CSRF nos formulários.
+- Validação de extensões e limite de tamanho para imagens enviadas.
+- Configurações de segurança para cookies de sessão.
+
+## 🎨 Proposta do projeto
+
+O SoundTrack-Map parte da ideia de que músicas podem estar associadas a lugares, pessoas e momentos específicos.
+
+Mais do que armazenar músicas, a aplicação busca construir um arquivo pessoal de experiências, no qual cada localização representa uma lembrança e cada lembrança possui sua própria trilha sonora.
+
+**Every place has a soundtrack. Every memory has a story.**
